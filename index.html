@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>はじめてのサイト</title>
+
+  <!-- スマホ対応 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- フォント -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden; /* ←スクロール禁止 */
+      color: #fff;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    /* スマホだけスクロール許可 */
+@media (max-width: 600px) {
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .button-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-top: 160px;
+    margin-bottom: 40px;
+  }
+}
+
+    /* 動画背景 */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    /* 暗くする */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
+
+    /* 左上タイトル */
+    .title-area {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+    }
+
+    .title-area h1 {
+      font-size: 60px;
+      margin: 0;
+      color: #00ffcc;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .title-area p {
+      font-size: 24px;
+      margin: 5px 0 0 0;
+      opacity: 0.8;
+    }
+
+    /* 中央ボタン（修正済み） */
+    .button-container {
+      position: fixed;
+
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .button-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+
+    button {
+      padding: 20px 40px;
+      font-size: 20px;
+      border: none;
+      background: #00ffcc;
+      cursor: pointer;
+      width: 280px;
+      border-radius: 12px;
+      touch-action: manipulation;
+    }
+
+    button:hover {
+      background: #00ccaa;
+    }
+
+    .button-row:hover .icon {
+      transform: scale(1.2);
+      transition: 0.2s;
+    }
+
+    /* 右上：製作者 */
+    .author {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 140px;
+      height: 140px;
+
+      gap: 5px;
+      color: #fff;
+
+      background: rgba(0,0,0,0.4);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .author-label {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .author-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .author-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 600px) {
+
+      .title-area h1 {
+        font-size: 36px;
+      }
+
+      .title-area p {
+        font-size: 16px;
+      }
+
+      .button-row {
+        gap: 10px;
+      }
+
+      .icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      button {
+        width: 200px;
+        font-size: 16px;
+        padding: 15px;
+      }
+
+      .author {
+        width: 90px;
+        height: 90px;
+      }
+
+      .author-icon {
+        width: 45px;
+        height: 45px;
+      }
+
+      .author-name {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 動画背景 -->
+  <video autoplay muted loop id="bg-video">
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+
+  <!-- 左上タイトル -->
+  <div class="title-area">
+    <h1>ようこそ</h1>
+    <p>リンク集サイト</p>
+  </div>
+
+  <!-- 右上：製作者 -->
+  <div class="author">
+    <span class="author-label">製作者</span>
+    <img src="icon.png" class="author-icon">
+    <span class="author-name">森の妖精</span>
+  </div>
+
+  <!-- 中央ボタン -->
+  <div class="button-container">
+
+    <div class="button-row">
+      <img src="youtube.png" class="icon">
+      <button onclick="window.open('https://www.youtube.com/channel/UCKzwGI8Yxwu6FituIdIrQ2Q', '_blank')">Youtube</button>
+    </div>
+
+    <div class="button-row">
+      <img src="X.png" class="icon">
+      <button onclick="window.open('https://x.com/ama_zero0', '_blank')">X(旧Twitter)</button>
+    </div>
+
+    <div class="button-row">
+      <img src="X.png" class="icon">
+      <button onclick="window.open('https://x.com/Zero_upa_rupa', '_blank')">X(旧Twitter)2nd</button>
+    </div>
+
+    <div class="button-row">
+      <img src="instagram.png" class="icon">
+      <button onclick="window.open('https://www.instagram.com/amamiyaray?igshid=YmMyMTA2M2Y%3D', '_blank')">instagram</button>
+    </div>
+
+    <div class="button-row">
+      <img src="TikTok.png" class="icon">
+      <button onclick="window.open('https://www.tiktok.com/@rainzero0000', '_blank')">TikTok</button>
+    </div>
+
+  </div>
+
+</body>
+</html>
