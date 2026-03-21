@@ -19,7 +19,7 @@
       font-family: 'Noto Sans JP', sans-serif;
     }
 
-    /* スマホだけスクロール許可 */
+    /* スマホだけスクロール許可 + ボタン上げる  */
 @media (max-width: 600px) {
   body {
     height: auto;
@@ -27,12 +27,16 @@
   }
 
   .button-container {
-    position: relative;
+    position: relative;      /* fixedからrelativeに変更 */
     top: auto;
     left: auto;
     transform: none;
-    margin-top: 60px;
+    margin-top: 60px;        /* 上に寄せる */
     margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;               /* スマホで少し隙間狭め */
   }
 }
 
@@ -192,17 +196,20 @@
       }
 
       .author {
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
       }
 
       .author-icon {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
       }
 
       .author-name {
-        font-size: 12px;
+        font-size: 14px;
+       
+        .author-label {
+    font-size: 13px;
       }
     }
   </style>
