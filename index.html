@@ -176,31 +176,26 @@
       .author-label { font-size: 13px; }
     }
 
-    /* 右下ログインボタン */
-    #loginBtn {
+    /* 右下ログインボタン + パスワード入力 */
+    #loginWrapper {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      z-index: 10;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      background: #00ffcc;
-      border: none;
-      cursor: pointer;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 5px;
     }
 
-    /* パスワード入力ポップアップ */
     #loginPopup {
       display: none;
-      position: fixed;
-      bottom: 70px;
-      right: 20px;
       background: rgba(0,0,0,0.85);
-      padding: 20px;
+      padding: 15px;
       border-radius: 10px;
       color: #fff;
-      z-index: 20;
+      min-width: 200px;
+      text-align: center;
       box-shadow: 0 0 10px #00ffcc;
     }
 
@@ -209,16 +204,19 @@
       font-size: 16px;
       border-radius: 5px;
       border: none;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     #loginPopup button {
       padding: 5px 10px;
       font-size: 16px;
-      margin-left: 5px;
+      margin-top: 5px;
       border-radius: 5px;
       border: none;
       background: #00ffcc;
       cursor: pointer;
+      width: 100%;
     }
 
   </style>
@@ -267,13 +265,13 @@
     </div>
   </div>
 
-  <!-- 右下ログインボタン -->
-  <button id="loginBtn" onclick="showLogin()">管理者ログイン</button>
-
-  <!-- パスワード入力ポップアップ -->
-  <div id="loginPopup">
-    <input type="password" id="adminPassword" placeholder="パスワード">
-    <button onclick="checkPassword()">送信</button>
+  <!-- 右下ログインボタンとポップアップ -->
+  <div id="loginWrapper">
+    <button id="loginBtn" onclick="showLogin()">管理者ログイン</button>
+    <div id="loginPopup">
+      <input type="password" id="adminPassword" placeholder="パスワード">
+      <button onclick="checkPassword()">送信</button>
+    </div>
   </div>
 
   <script>
@@ -284,11 +282,11 @@
 
     function checkPassword() {
       const password = document.getElementById("adminPassword").value;
-      const correctPassword = "admin123"; // ←ここをあなたのパスワードに変更
+      const correctPassword = "admin123"; // ←ここをパスワードに変更
 
       if(password === correctPassword){
         alert("認証成功！管理者ページへ移動します");
-        window.location.href = "admin.html"; // ←管理者ページのURLに変更
+        window.location.href = "admin.html"; // ←管理者ページURL
       } else {
         alert("パスワードが間違っています");
       }
