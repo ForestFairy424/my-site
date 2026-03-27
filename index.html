@@ -14,31 +14,31 @@
     body {
       margin: 0;
       height: 100vh;
-      overflow: hidden; /* ←スクロール禁止 */
+      overflow: hidden; 
       color: #fff;
       font-family: 'Noto Sans JP', sans-serif;
     }
 
-    /* スマホだけスクロール許可 + ボタン上げる  */
-@media (max-width: 600px) {
-  body {
-    height: auto;
-    overflow-y: auto;
-  }
+    /* スマホだけスクロール許可 + ボタン調整 */
+    @media (max-width: 600px) {
+      body {
+        height: auto;
+        overflow-y: auto;
+      }
 
-  .button-container {
-    position: relative;      /* fixedからrelativeに変更 */
-    top: auto;
-    left: auto;
-    transform: none;
-    margin-top: 60px;        /* 上に寄せる */
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;               /* スマホで少し隙間狭め */
-  }
-}
+      .button-container {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: 60px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+    }
 
     /* 動画背景 */
     #bg-video {
@@ -83,14 +83,12 @@
       opacity: 0.8;
     }
 
-    /* 中央ボタン（修正済み） */
+    /* 中央ボタン */
     .button-container {
       position: fixed;
-
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -135,18 +133,14 @@
       position: fixed;
       top: 25px;
       right: 25px;
-
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-
       width: 140px;
       height: 140px;
-
       gap: 5px;
       color: #fff;
-
       background: rgba(0,0,0,0.4);
       border-radius: 10px;
       backdrop-filter: blur(10px);
@@ -171,50 +165,64 @@
 
     /* スマホ対応 */
     @media (max-width: 600px) {
-
-      .title-area h1 {
-        font-size: 36px;
-      }
-
-      .title-area p {
-        font-size: 16px;
-      }
-
-      .button-row {
-        gap: 10px;
-      }
-
-      .icon {
-        width: 50px;
-        height: 50px;
-      }
-
-      button {
-        width: 200px;
-        font-size: 16px;
-        padding: 15px;
-      }
-
-      .author {
-        width: 120px;
-        height: 120px;
-      }
-
-      .author-icon {
-        width: 50px;
-        height: 50px;
-      }
-
-      .author-name {
-        font-size: 14px;
-       
-        .author-label {
-    font-size: 13px;
-      }
+      .title-area h1 { font-size: 36px; }
+      .title-area p { font-size: 16px; }
+      .button-row { gap: 10px; }
+      .icon { width: 50px; height: 50px; }
+      button { width: 200px; font-size: 16px; padding: 15px; }
+      .author { width: 120px; height: 120px; }
+      .author-icon { width: 50px; height: 50px; }
+      .author-name { font-size: 14px; }
+      .author-label { font-size: 13px; }
     }
+
+    /* 右下ログインボタン */
+    #loginBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      background: #00ffcc;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* パスワード入力ポップアップ */
+    #loginPopup {
+      display: none;
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      background: rgba(0,0,0,0.85);
+      padding: 20px;
+      border-radius: 10px;
+      color: #fff;
+      z-index: 20;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    #loginPopup input {
+      padding: 5px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    #loginPopup button {
+      padding: 5px 10px;
+      font-size: 16px;
+      margin-left: 5px;
+      border-radius: 5px;
+      border: none;
+      background: #00ffcc;
+      cursor: pointer;
+    }
+
   </style>
 </head>
-
 <body>
 
   <!-- 動画背景 -->
@@ -237,33 +245,55 @@
 
   <!-- 中央ボタン -->
   <div class="button-container">
-
     <div class="button-row">
       <img src="youtube.png" class="icon">
       <button onclick="window.open('https://www.youtube.com/@KoNa_tyan0830', '_blank')">Youtube</button>
     </div>
-
     <div class="button-row">
       <img src="kona.png" class="icon">
       <button onclick="window.open('https://youtu.be/nA6-rGrkCeE?si=yo2rWbreXd2kmiPx', '_blank')">晩餐歌</button>
     </div>
-
     <div class="button-row">
       <img src="kona.png" class="icon">
       <button onclick="window.open('https://youtu.be/aU2poS0Y-Fo?si=yvuoXO3sjcb22MKs', '_blank')">アイドル</button>
     </div>
-
     <div class="button-row">
       <img src="kona.png" class="icon">
       <button onclick="window.open('https://youtu.be/W5stunJFJZU?si=_iV_BJkfXSh6S4-P', '_blank')">グッバイ宣言</button>
     </div>
-
     <div class="button-row">
       <img src="kona.png" class="icon">
       <button onclick="window.open('https://youtu.be/Ym_ZTANgFqU?si=XWxM2K_ib3xN1uRq', '_blank')">鬼の宴</button>
     </div>
-
   </div>
+
+  <!-- 右下ログインボタン -->
+  <button id="loginBtn" onclick="showLogin()">管理者ログイン</button>
+
+  <!-- パスワード入力ポップアップ -->
+  <div id="loginPopup">
+    <input type="password" id="adminPassword" placeholder="パスワード">
+    <button onclick="checkPassword()">送信</button>
+  </div>
+
+  <script>
+    function showLogin() {
+      const popup = document.getElementById("loginPopup");
+      popup.style.display = (popup.style.display === "none") ? "block" : "none";
+    }
+
+    function checkPassword() {
+      const password = document.getElementById("adminPassword").value;
+      const correctPassword = "admin123"; // ←ここをあなたのパスワードに変更
+
+      if(password === correctPassword){
+        alert("認証成功！管理者ページへ移動します");
+        window.location.href = "admin.html"; // ←管理者ページのURLに変更
+      } else {
+        alert("パスワードが間違っています");
+      }
+    }
+  </script>
 
 </body>
 </html>
